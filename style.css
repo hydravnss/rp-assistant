@@ -1,0 +1,241 @@
+/* Direct Ask — panneau hors RP. Ne cible PAS #form_sheld / #send_form / #send_but / #top-bar / Portrait Lignes. */
+
+.da-float {
+  position: fixed;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: calc(96px + env(safe-area-inset-bottom, 0px));
+  z-index: 9500;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(145deg, #7c5cff, #4f8cff);
+  color: #fff;
+  font-size: 22px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.da-float.da-show { display: flex; }
+.da-float:active { transform: scale(0.94); }
+
+.da-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 9600;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+.da-panel.da-open {
+  pointer-events: auto;
+  opacity: 1;
+}
+.da-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+.da-sheet {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 8%;
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--SmartThemeBlurTintColor, #1c1c1e);
+  color: var(--SmartThemeBodyColor, #f2f2f7);
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 -8px 28px rgba(0, 0, 0, 0.4);
+  transform: translateY(12px);
+  transition: transform 0.2s ease;
+  overflow: hidden;
+}
+.da-panel.da-open .da-sheet { transform: translateY(0); }
+
+.da-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px 14px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+.da-head-left { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.da-logo { font-size: 22px; }
+.da-title { font-weight: 700; font-size: 16px; line-height: 1.2; }
+.da-sub { font-size: 11px; opacity: 0.65; line-height: 1.2; }
+.da-iconbtn {
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.da-quicks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px 12px;
+  flex-shrink: 0;
+}
+.da-chip {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  color: inherit;
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.da-chip:active { background: rgba(124, 92, 255, 0.35); }
+
+.da-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 0 12px 8px;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+.da-check { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.da-n {
+  width: 42px;
+  margin: 0 2px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+  text-align: center;
+  padding: 2px 0;
+}
+.da-linkbtn {
+  border: none;
+  background: transparent;
+  color: #8ab4ff;
+  font-size: 12px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 4px;
+}
+
+.da-msgs {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.da-empty {
+  opacity: 0.6;
+  text-align: center;
+  padding: 24px 12px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.da-msg {
+  max-width: 92%;
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.da-user {
+  align-self: flex-end;
+  background: #3a5fff;
+  color: #fff;
+}
+.da-assistant {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.08);
+}
+.da-acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.da-act {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.2);
+  color: inherit;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.da-status {
+  padding: 4px 12px;
+  font-size: 12px;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.da-compose {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+  background: rgba(0, 0, 0, 0.15);
+}
+.da-compose textarea {
+  flex: 1;
+  resize: none;
+  min-height: 44px;
+  max-height: 120px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.25);
+  color: inherit;
+  padding: 10px 12px;
+  font: inherit;
+}
+.da-send {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #7c5cff, #4f8cff);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.da-send:disabled { opacity: 0.45; }
+
+.da-settings .da-help {
+  font-size: 12px;
+  opacity: 0.85;
+  line-height: 1.35;
+  margin: 0 0 8px;
+}
+.da-settings code { font-size: 11px; }
+
+#da_wand_button .extensionsMenuExtensionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}

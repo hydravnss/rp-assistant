@@ -1,0 +1,14 @@
+{
+    "display_name": "Direct Ask",
+    "loading_order": 980,
+    "requires": [],
+    "optional": [],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "hydravnss",
+    "version": "1.0.0",
+    "homePage": "https://github.com/hydravnss/rp-assistant",
+    "minimum_client_version": "1.12.0",
+    "auto_update": true,
+    "description": "FR : assistant hors RP (style Direct Ask) — idées de scènes, relances, conseils, résumé, suggestions. Panneau dédié, n'injecte rien dans le chat du personnage. Utilise generateRaw / le modèle déjà configuré. EN: out-of-character RP assistant panel (scene ideas, prompts, tips) — never writes into the character chat."
+}
